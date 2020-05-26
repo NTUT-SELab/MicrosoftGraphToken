@@ -1,0 +1,41 @@
+trigger: none
+
+schedules:
+- cron: "*/8 * * * *"   # replace with your schedule 
+  branches: 
+    include: 
+    - master 
+
+pool:
+  name: Azure Pipelines
+  vmImage: 'ubuntu-latest'
+  
+steps:
+  - script: |
+     git checkout master
+     
+    displayName: 'Checkout master'
+  
+  - task: DotNetCoreCLI@2
+    displayName: Restore
+    inputs:
+      command: restore
+      projects: '**/*.csproj'
+  
+  - task: DotNetCoreCLI@2
+    displayName: run
+    inputs:
+      command: run
+      projects: '**/*.csproj'
+      arguments: '$(clientId) $(secrets) $(tenant) $(u) $(x0)'
+  
+  - script: |
+     git config --global user.name "Azure Devops"
+     git config --global user.email Ntut@xxx.yyy.zzz
+     git add .
+     git commit -m "reflash token"
+     git push https://ChengYen-Tang:$(GithubToken)@github.com/NTUT-SELab/MicrosoftGraphToken.git
+     
+     
+    displayName: 'git push'
+  
