@@ -37,7 +37,7 @@ namespace MicrosoftGraphToken
         {
             HttpClient httpClient = new HttpClient();
             string appurl = "https://localhost:44375/";
-            string scope = "offline_access user.read";
+            string scope = "offline_access user.read Mail.ReadBasic.All Mail.Read Mail.ReadWrite Mail.Send";
 
             Dictionary<string, string> body = new Dictionary<string, string>()
             {
