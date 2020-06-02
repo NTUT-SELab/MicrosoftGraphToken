@@ -1,7 +1,7 @@
 trigger: none
 
 schedules:
-- cron: "*/8 * * * *"   # replace with your schedule 
+- cron: "*/58 * * * *"   # replace with your schedule 
   branches: 
     include: 
     - master 
