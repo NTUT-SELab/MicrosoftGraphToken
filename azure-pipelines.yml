@@ -35,4 +35,3 @@ steps:
      git push https://ChengYen-Tang:$(GithubToken)@github.com/NTUT-SELab/MicrosoftGraphToken.git
      
     displayName: 'git push'
-  
