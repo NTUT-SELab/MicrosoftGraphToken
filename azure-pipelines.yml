@@ -33,5 +33,5 @@ steps:
      git add .
      git commit -m "reflash token"
      git push https://ChengYen-Tang:$(GithubToken)@github.com/NTUT-SELab/MicrosoftGraphToken.git
-     
+
     displayName: 'git push'
