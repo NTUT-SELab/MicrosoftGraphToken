@@ -21,7 +21,7 @@ namespace MicrosoftGraphToken
 
             string json = File.ReadAllText("./Token.txt");
             string reflashToken = Decode(JObject.Parse(json)["reflash_token"].ToString(), u, x0);
-            // string reflashToken = JObject.Parse(json)["reflash_token"].ToString();
+            string reflashToken = JObject.Parse(json)["reflash_token"].ToString();
 
             var tokens = await ReflashTokenAsync(clientId, secrets, tenant,reflashToken);
 
