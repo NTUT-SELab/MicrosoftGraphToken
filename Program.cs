@@ -20,8 +20,8 @@ namespace MicrosoftGraphToken
             double x0 = double.Parse(args[4]);
 
             string json = File.ReadAllText("./Token.txt");
-            // string reflashToken = Decode(JObject.Parse(json)["reflash_token"].ToString(), u, x0);
-            string reflashToken = JObject.Parse(json)["reflash_token"].ToString();
+            string reflashToken = Decode(JObject.Parse(json)["reflash_token"].ToString(), u, x0);
+            // string reflashToken = JObject.Parse(json)["reflash_token"].ToString();
 
             var tokens = await ReflashTokenAsync(clientId, secrets, tenant,reflashToken);
 
@@ -37,8 +37,8 @@ namespace MicrosoftGraphToken
         static async Task<(string, string)> ReflashTokenAsync(string clientId, string secrets, string tenant, string reflash_token)
         {
             HttpClient httpClient = new HttpClient();
-            string appurl = "https://localhost:44375/";
-            string scope = "offline_access user.read Mail.Read Mail.ReadWrite Mail.Send";
+            string appurl = "https://msgraphauthorization.azurewebsites.net/authcode/";
+            string scope = "offline_access user.read Mail.Read Mail.ReadWrite Mail.Send Files.Read Files.ReadWrite Files.Read.All Files.ReadWrite.All";
 
             Dictionary<string, string> body = new Dictionary<string, string>()
             {
